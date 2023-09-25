@@ -21,21 +21,21 @@ $gerechtTable = new gerecht($db->getConnection());
 
 /// VERWERK 
 
-// $info = $gerechtInfo->selecteerInfo(23,$user);
-// $addfavorite = $gerechtInfo->addFavorite(1,2);
-// $deletefavorite = $gerechtInfo->deleteFavorite(59);
-// $ingredient = $ingredient->selecteerIngredient(1,$art);
-$gerecht = $gerechtTable->selecteerGerecht(1);
-$user = $gerechtTable->selecteerUser($userTable,2);
-$ingredient = $gerechtTable->selecteerIngredient($ingredientTable, $art,1);
-$calories = $gerechtTable->calcCalories($ingredientTable, $art,2);
+$keukenType = $keukenTypeTable->selecteerKeukenType(1);
+$info = $gerechtInfoTable->selecteerInfo(1,"O");
+$addfavorite = $gerechtInfoTable->addFavorite(1,2);
+$deletefavorite = $gerechtInfoTable->deleteFavorite(59);
+$ingredients = $ingredientTable->selecteerIngredient(1);
+// $gerecht = $gerechtTable->selecteerGerecht(1);
+// $user = $gerechtTable->selecteerUser($userTable,2);
+// // $ingredient = $gerechtTable->selecteerIngredient($ingredientTable, $art,1);
+// $calories = $gerechtTable->calcCalories($ingredientTable, $art,2);
+// $price = $gerechtTable->calcPrice($ingredientTable, $art,2);
 
 
 /// RETURN
 echo '<pre>';
+var_dump($deletefavorite);
 
-// var_dump($info);
-// var_dump($gerecht);
-// var_dump($user);
-// var_dump($ingredient);
-var_dump($calories);
+
+

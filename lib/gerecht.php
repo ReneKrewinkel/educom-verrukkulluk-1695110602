@@ -45,9 +45,21 @@ class gerecht {
 
         }
         return($totalCalories);
+    }
 
-        
+    public function calcPrice($ingredientTable, $art,$gerecht_id) {
+        $totalPrice = 0;
+        $sql = "select * from ingredient where gerecht_id = $gerecht_id";
 
-
+        $result = mysqli_query($this->connection,$sql);
+        while($row = mysqli_fetch_assoc($result)) {
+            $ingredient = $ingredientTable->selecteerIngredient($row["id"], $art);
+            $aantal = $ingredient["ingredient"]["aantal"];
+            $verpakking = $ingredient["artikel"]["verpakking"];
+            $priceVerpakking = $ingredient["artikel"]["prijs"];
+            echo $priceVerpakking . "<br>";
+            $totalPrice += ($priceVerpakking / $verpakking * $aantal);
+        }
+        return(round($totalPrice,0));
     }
 }
