@@ -110,22 +110,27 @@ class gerecht {
     }
 
     public function selecteerGerecht($gerecht_id){
-        $sql = "select * from gerecht where id=$gerecht_id";
-
+        if ($gerecht_id === "alle"){
+            $sql = "select * from gerecht";
+        }
+        else {
+            $sql = "select * from gerecht where id=$gerecht_id";
+        }
+        
         $result = mysqli_query($this->connection,$sql);
         $gerechten = [];
 
         while($gerecht = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $user = $this->selectUser($gerecht["user_id"]);
-            $ingredienten = $this->selectIngredient($gerecht_id);
+            $ingredienten = $this->selectIngredient($gerecht["id"]);
             $calories = $this->berekenCalories($ingredienten);
             $prijs = $this->berekenPrijsRecept($ingredienten);
-            $rating = $this-> selecteerWaardering($gerecht_id);
-            $bereidingswijze = $this->selecteerBereidingswijze($gerecht_id);
-            $opmerkingen = $this->selecteerOpmerkingen($gerecht_id);
+            $rating = $this-> selecteerWaardering($gerecht["id"]);
+            $bereidingswijze = $this->selecteerBereidingswijze($gerecht["id"]);
+            $opmerkingen = $this->selecteerOpmerkingen($gerecht["id"]);
             $keuken = $this->selecteerKeuken($gerecht["keuken_id"]);
             $type = $this->selecteerType($gerecht["type_id"]);
-            $favoriet = $this->bepaalFavoriet($gerecht_id, $user_id=1);
+            $favoriet = $this->bepaalFavoriet($gerecht["id"], $user_id=1);
             
             
             

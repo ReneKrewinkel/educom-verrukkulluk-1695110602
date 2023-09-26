@@ -26,7 +26,7 @@ $gerechtTable = new gerecht($db->getConnection());
 // $addfavorite = $gerechtInfoTable->addFavorite(1,2);
 // $deletefavorite = $gerechtInfoTable->deleteFavorite(59);
 // $ingredients = $ingredientTable->selecteerIngredient(1);
-$gerecht = $gerechtTable->selecteerGerecht(3);
+$gerecht = $gerechtTable->selecteerGerecht($gerecht_id = "alle");
 
 
 
