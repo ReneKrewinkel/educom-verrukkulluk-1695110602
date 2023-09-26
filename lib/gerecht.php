@@ -109,7 +109,7 @@ class gerecht {
         return(FALSE);
     }
 
-    public function selecteerGerecht($gerecht_id){
+    public function selecteerGerecht($gerecht_id = "alle"){
         if ($gerecht_id === "alle"){
             $sql = "select * from gerecht";
         }
