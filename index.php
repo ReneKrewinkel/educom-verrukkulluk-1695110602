@@ -7,6 +7,7 @@ require_once("lib/keukentype.php");
 require_once("lib/gerechtinfo.php");
 require_once("lib/ingredient.php");
 require_once("lib/gerecht.php");
+require_once("lib/boodschappenlijst.php");
 
 
 /// INIT
@@ -17,6 +18,7 @@ $keukenTypeTable = new keukenType($db->getConnection());
 $gerechtInfoTable = new gerechtInfo($db->getConnection());
 $ingredientTable = new ingredient($db->getConnection());
 $gerechtTable = new gerecht($db->getConnection());
+$boodschappenlijst = new boodschappenlijst($db->getConnection());
 
 
 /// VERWERK 
@@ -27,13 +29,14 @@ $gerechtTable = new gerecht($db->getConnection());
 // $deletefavorite = $gerechtInfoTable->deleteFavorite(59);
 // $ingredients = $ingredientTable->selecteerIngredient(1);
 
-$gerecht = $gerechtTable->selecteerGerecht(1);
+// $gerecht = $gerechtTable->selecteerGerecht(1);
+$boodschappenlijst = $boodschappenlijst->boodschappenToevoegen(2,1);
 
 
 
 /// RETURN
 echo '<pre>';
-var_dump($gerecht);
+var_dump($boodschappenlijst);
 
 
 
