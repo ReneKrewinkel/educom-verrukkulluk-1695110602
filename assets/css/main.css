@@ -52,3 +52,22 @@ html, body {
     font-family: "Helvetica Neue", Arial, SansSerif;
     font-size: 16px;
 }
+
+.navigation_sander {
+    width: 100%;
+    background-color: red;
+    color: var(--white);
+    padding: 40px;
+    text-align: center;
+}
+
+.footer_sander {
+    background-color: var(--darker-orange);
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    padding:50px;
+    height:250px;
+    color: var(--white);
+
+}

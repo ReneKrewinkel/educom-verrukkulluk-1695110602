@@ -41,7 +41,7 @@ class gerecht {
             
         }
 
-        return($totaalCalories);
+        return(round($totaalCalories,0));
     }
 
     private function berekenPrijsRecept($ingredients){

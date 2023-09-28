@@ -1,5 +1,12 @@
 <?php
 
+require_once("./vendor/autoload.php");
+
+$loader = new \Twig\Loader\FilesystemLoader("./templates");
+
+$twig = new \Twig\Environment($loader, ["debug" => true]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
+
 require_once("lib/database.php");
 require_once("lib/artikel.php");
 require_once("lib/user.php");
@@ -10,33 +17,69 @@ require_once("lib/gerecht.php");
 require_once("lib/boodschappenlijst.php");
 
 
-/// INIT
+
 $db = new database();
-$art = new artikel($db->getConnection());
-$userTable = new user($db->getConnection());
-$keukenTypeTable = new keukenType($db->getConnection());
-$gerechtInfoTable = new gerechtInfo($db->getConnection());
-$ingredientTable = new ingredient($db->getConnection());
-$gerechtTable = new gerecht($db->getConnection());
-$boodschappenlijst = new boodschappenlijst($db->getConnection());
+$gerecht = new gerecht($db->getConnection());
+$data = $gerecht->selecteerGerecht();
 
+$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+$action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
-/// VERWERK 
+switch($action){
 
-// $keukenType = $keukenTypeTable->selecteerKeukenType(1);
-// $info = $gerechtInfoTable->selecteerInfo(1,"O");
-// $addfavorite = $gerechtInfoTable->addFavorite(1,2);
-// $deletefavorite = $gerechtInfoTable->deleteFavorite(59);
-// $ingredients = $ingredientTable->selecteerIngredient(1);
+    case "homepage": {
+        $data = $gerecht->selecteerGerecht("alle");
+        $template = 'homepage.html.twig';
+        $title = "homepage";
 
-// $gerecht = $gerechtTable->selecteerGerecht(1);
-$boodschappenlijst = $boodschappenlijst->boodschappenToevoegen(2,1);
+        break;
+    }
+    
+    case "detail": {
+    
+    
+        break;
+    }
+    
+    case "preperation": {
+    
+    
+        break;
+    }
+    
+    case "remarks": {
+    
+    
+        break;
+    }
 
+    case "search": {
+    
+    
+        break;
+    }
+    
+    case "rating": {
+    
+    
+        break;
+    }
+    
+    case "favorites": {
+    
+    
+        break;
+    }
+    
+    case "groceries": {
+    
+    
+        break;
+    }
 
+}
 
-/// RETURN
-echo '<pre>';
-var_dump($boodschappenlijst);
+$template = $twig->load($template);
 
-
+echo $template->render(["title" => $title, "data" => $data]);
 
