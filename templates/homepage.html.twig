@@ -13,24 +13,31 @@
 
 
 {# Loop #}
-    <ul>
+    <ul class="recipes">
     {% for record in data %}
-        <li>
-            <img src="{{ record.afbeelding }}" style="width: 250px; height: 150px;">
-            <br>
-            <span style='color: green; font-weight: 900' >{{ record.titel }}</span> {{ record.rating }} <br>
-            {{ record.lange_omschrijving}} <br>
+        <li class="recipe">
+            {{record.titel}}
+        
+            
 
-            {{ record.prijs}}
-            {{ record.calories}}
+            
+            {# <div class="card" style="width: 10rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> #}
+
             
             
         </li>
     {% endfor %}
-    <ul>
+    </ul>
      {# Dump #}
        {# <pre>
         {{ dump(data) }}
        </pre> #}
+    
 
 {% endblock %}

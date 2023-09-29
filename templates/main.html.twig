@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="nl">
 <head>
 
     <title>het is verrukkuluk! :: {{ TITEL }} </title>
@@ -19,38 +19,60 @@
 
     <div class="row">
         <div class="col-md-12 navigation_sander">
-        {% block header %}
-            hi
-        {% endblock %}   
+            
+            {% block header %}
+            
+                
+        
+        
+            
+            {% endblock %}   
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Agenda</h2>
+            <div class="agenda">
+                <img src="assets/img/verrukkulluk-agenda.png" style="width:150;">
+                    <p>
+                    workshop <br> 
+                    workshop <br> 
+                    workshop <br> 
+                    workshop <br> 
+                    workshop <br> 
+                    workshop <br> 
+
+                    </p>
+            </div>
+            <div class="log-in">
+                username <br>
+                password
+            
+            
             {# <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
             <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a> #}
-
-
+                
+            </div>
         </div>
         <div class="col-md-8">
-        
-            {%  block content %}
-            {%  endblock %}
+            <div class="main">
+                {%  block content %}
+                {%  endblock %}
+            </div>
         </div>
     </div>
 
 
     <div class="row">
         <div class="col-md-12 footer_sander">
-            <img src="assets/img/verrukkulluk-pay-off.png" style="width:100; margin-right:50;margin-bottom:200;"/>
+            <img src="assets/img/verrukkulluk-pay-off.png" style="width:100; margin-right:30;"/>
             <img src="assets/img/verrukkulluk-contact.png" style="width:150"/>
             
-            {# <p style="font-size:12px">
-            verrukkulluk.nl <br>
+            <p class="footer_sander__p">
+            Verrukkulluk.nl <br>
             Poststraat 2b  <br>
             Sittard <br>
-            info@verrukkulluk.nl</p> #}
+            info@verrukkulluk.nl</p>
         </div>
     </div>
 

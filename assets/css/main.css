@@ -54,20 +54,71 @@ html, body {
 }
 
 .navigation_sander {
-    width: 100%;
-    background-color: red;
+    width: 80%;
+    height: 500px;
+    margin: 0 auto 50;
+    background-color: var(--darker-orange);
     color: var(--white);
     padding: 40px;
     text-align: center;
+    }
+
+.agenda {
+    background-color: var(--lighter-green);
+    margin-left:200px;
+    height:300px;
+    
+
 }
+
+.log-in {
+    background-color: var(--darker-red);
+    margin-top: 50px;
+    margin-left:200px;
+    height:200px;
+}
+
+.main {
+    border: 3px dotted #000;
+    margin-right: 200px;
+    height: 100%;
+    
+    
+    
+}
+
+.recipes {
+    list-style: none;
+    padding:0;
+    height:100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;    
+}
+
+.recipe {
+    background-color: red;
+    width: 40%;
+    height:250px;
+    text-align: center;
+}
+
 
 .footer_sander {
     background-color: var(--darker-orange);
     width:80%;
+    margin-top: 100px;
     margin-left:auto;
     margin-right:auto;
     padding:50px;
     height:250px;
     color: var(--white);
 
+}
+
+.footer_sander__p {
+    font-size: 12px;
+    line-height: 0.9rem;
+    margin-left:150px;
 }
