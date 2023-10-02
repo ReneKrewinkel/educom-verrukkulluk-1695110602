@@ -36,7 +36,9 @@ switch($action){
     }
     
     case "detail": {
-    
+        $data = $gerecht->selecteerGerecht(1);
+        $template = 'detail.html.twig';
+        $title = "detail";
     
         break;
     }

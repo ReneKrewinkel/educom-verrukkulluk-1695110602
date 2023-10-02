@@ -59,14 +59,25 @@ html, body {
     margin: 0 auto 50;
     background-color: var(--darker-orange);
     color: var(--white);
-    padding: 40px;
     text-align: center;
+    position: relative;
     }
+
+.logo {
+    position:absolute;
+    left:0;
+    z-index:1;
+    width: 350px;
+    height: auto;
+    margin:50px;
+
+}
 
 .agenda {
     background-color: var(--lighter-green);
-    margin-left:200px;
+    margin-left:150px;
     height:300px;
+    text-align: center;
     
 
 }
@@ -74,13 +85,17 @@ html, body {
 .log-in {
     background-color: var(--darker-red);
     margin-top: 50px;
-    margin-left:200px;
-    height:200px;
+    margin-left:150px;
+    height:300px;
+    text-align: center;
+    
+    
 }
 
 .main {
     border: 3px dotted #000;
-    margin-right: 200px;
+    margin-left: 25px;
+    margin-right: 150px;
     height: 100%;
     
     
@@ -97,12 +112,6 @@ html, body {
     align-content: space-between;    
 }
 
-.recipe {
-    background-color: red;
-    width: 40%;
-    height:250px;
-    text-align: center;
-}
 
 
 .footer_sander {
@@ -121,4 +130,22 @@ html, body {
     font-size: 12px;
     line-height: 0.9rem;
     margin-left:150px;
+}
+
+.recipe_detail{
+    text-align: center;
+    height: 50%;
+    background-color: green;
+}
+
+.recipe_info{
+    height:50%;
+    background-color: var(--lighter-green);
+}
+
+.recipe_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
 }

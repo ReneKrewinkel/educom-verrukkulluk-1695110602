@@ -159,7 +159,12 @@ class gerecht {
 
             ];
         }
-
-        return($gerechten);
+        if (count($gerechten) == 1) {
+            return($gerechten[0]);
+        }
+        else{
+            return($gerechten);
+        }
+        
     }
 }

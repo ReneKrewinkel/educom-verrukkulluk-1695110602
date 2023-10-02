@@ -1,5 +1,20 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<h1>Hallo Bram</h1>
+    <img src={{data.afbeelding}} alt="img-recipe" class="recipe_img">
+{% endblock %}
+
+{% block content %}
+<div class= "recipe_detail">
+    <h1>{{data["titel"]}}</h1>
+
+</div>
+<ul class= "recipe_info">
+    <h3>Ingredients</h3>
+    {% for ingredient in data.ingredienten %}
+        <li>{{ingredient.naam}}</li>
+
+    {% endfor %}
+</ul>
+
 {% endblock %}
