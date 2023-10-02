@@ -22,9 +22,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="navigation_sander">
-                {% block header %}
-                {% endblock %} 
                 <img src="assets/img/logo-v2.png" class="logo">
+                {% block header %}
+                 
+                
                 <div id="hero-carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#hero-carousel" data-slide-to="0" class="active"></li>
@@ -43,52 +44,43 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                
-
-
-                 
+                {% endblock %}
             </div>
-            
-              
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <div class="agenda">
-                <img src="assets/img/verrukkulluk-agenda.png" style="width:150;">
-                    <p>
-                    workshop <br> 
-                    workshop <br> 
-                    workshop <br> 
-                    workshop <br> 
-                    workshop <br> 
-                    workshop <br> 
-
-                    </p>
-            </div>
-            <div class="log-in">
-                <img src="assets/img/verrukkulluk-login.png" style="width:150;">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" id="exampleInputPassword1">
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-            
-            
-            {# <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-            <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a> #}
+            <div class="column-left">
+                <div class="agenda">
+                    <img src="assets/img/verrukkulluk-agenda.png" style="width:150;">
+                        <p>
+                            workshop <br> 
+                            workshop <br> 
+                            workshop <br> 
+                            workshop <br> 
+                            workshop <br> 
+                            workshop <br> 
+                        </p>
+                </div>
+                <div class="log-in">
+                    <img src="assets/img/verrukkulluk-login.png" style="width:150;">
+                    <form>
+                        <div class="form-field">
+                            <label for="exampleInputEmail1">Email</label><br>
+                            <input type="email" id="exampleInputEmail1" class="input-field">
+                        </div>
+                        <div class="form-field">
+                            <label for="exampleInputPassword1">Password</label><br>
+                            <input type="password" id="exampleInputPassword1" class="input-field">
+                        </div>
+                        <br>
+                        <button type="submit" class="button" style="background-color: var(--darker-orange); width:50%; font-size:2rem;">Login</button>
+                    </form>
                 
+                </div>
             </div>
+        
         </div>
         <div class="col-md-8">
             <div class="main">
@@ -105,10 +97,11 @@
             <img src="assets/img/verrukkulluk-contact.png" style="width:150"/>
             
             <p class="footer_sander__p">
-            Verrukkulluk.nl <br>
-            Poststraat 2b  <br>
-            Sittard <br>
-            info@verrukkulluk.nl</p>
+                Verrukkulluk.nl <br>
+                Poststraat 2b  <br>
+                Sittard <br>
+                info@verrukkulluk.nl
+            </p>
         </div>
     </div>
 
