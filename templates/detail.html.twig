@@ -8,18 +8,42 @@
 <div class="detail_card">
     <div class= "row" style="height:100%">
         <div class="col-md-6">
-            <div class="detail_recipe_img" style="width:100%; height:100%; background-image:url({{data.afbeelding}})"></div>
+            <div class="detail_recipe_img" style="background-image:url({{data.afbeelding}})"></div>
             
         </div>
         <div class="col-md-6">
-            <div> 4pers.  {{data.prijs}} {{data.calories}}</div>
-            <span> {{data.titel}} </span>
-            <span> {{data.rating}}</span> <br>
-            <span> Keuken {{data.keuken.omschrijving}}</span>
-            <span> Type {{data.type.omschrijving}}</span> <br>
-            <p>{{data.lange_omschrijving}}</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fas fa-users recipe_icons"></i> 
+                    <span>4</span>
+                    <i class="fas fa-euro-sign recipe_icons"></i>
+                    <span>{{(data.prijs/100)}}</span>
+                    <i class="fas fa-burn recipe_icons"></i>
+                    <span>{{data.calories}}</span><br>
+                </div>
+                <div class="col-md-6"><h2>{{data.titel}}<h2></div>
+                <div class="col-md-6">{{data.rating}}</div>
+                <div class="col-md-6">
+                    <h5 style="display:inline">Keuken</h5>
+                    <span style="font-size:0.9rem">{{data.keuken.omschrijving}}</span>
+                </div>
+                <div class="col-md-6">
+                    <h5 style="display:inline">Type</h5>
+                    <span style="font-size:0.9rem">{{data.type.omschrijving}}</span>
+                </div>
+                
+                <div class="col-md-12">
+                    <p>{{data.lange_omschrijving}}</p>
+                </div>
+                    
+                <div class="col-md-6">
+                    <button class="button">Op lijst</button>
+                </div>
+                <div class="col-md-6">
+                    <a class="far fa-heart favorite"></a>
+                </div>
 
-            <button class="button">Op lijst</button>
+            </div>
             
 
             
@@ -35,16 +59,16 @@
                 <div class="tabbable" id="tabs-420048">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active show" href="#tab1" data-toggle="tab">Ingredients</a>
+                            <a class="nav-link active show recipe-tabs" href="#tab1" data-toggle="tab">Ingredients</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab2" data-toggle="tab">Preperation</a>
+                            <a class="nav-link recipe-tabs" href="#tab2" data-toggle="tab">Preperation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab3" data-toggle="tab">Remarks</a>
+                            <a class="nav-link recipe-tabs" href="#tab3" data-toggle="tab">Remarks</a>
                         </li>
                     </ul>
-                    <div class="tab-content">
+                    <div class="tab-content recipe-body">
                         <div class="tab-pane active" id="tab1">
                             <ul>
                                 {% for ingredient in data.ingredienten %}
