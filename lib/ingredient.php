@@ -34,7 +34,9 @@ class ingredient {
                 "omschrijving" => $artikel["omschrijving"],
                 "prijs" => $artikel["prijs"],
                 "verpakking" => $artikel["verpakking"],
-                "calories" => $artikel["calories"]
+                "calories" => $artikel["calories"],
+                "eenheid" => $artikel["eenheid"],
+                "afbeelding" => $artikel["afbeelding"]
             ];
         }
         return($ingredients);

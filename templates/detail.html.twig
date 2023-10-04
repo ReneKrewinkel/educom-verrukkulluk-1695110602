@@ -5,53 +5,54 @@
 {% endblock %}
 
 {% block content %}
-<div class="detail_card">
-    <div class= "row" style="height:100%">
-        <div class="col-md-6">
-            <div class="detail_recipe_img" style="background-image:url({{data.afbeelding}})"></div>
-            
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-12">
-                    <i class="fas fa-users recipe_icons"></i> 
-                    <span>4</span>
-                    <i class="fas fa-euro-sign recipe_icons"></i>
-                    <span>{{(data.prijs/100)}}</span>
-                    <i class="fas fa-burn recipe_icons"></i>
-                    <span>{{data.calories}}</span><br>
-                </div>
-                <div class="col-md-6"><h2>{{data.titel}}<h2></div>
-                <div class="col-md-6">{{data.rating}}</div>
-                <div class="col-md-6">
-                    <h5 style="display:inline">Keuken</h5>
-                    <span style="font-size:0.9rem">{{data.keuken.omschrijving}}</span>
-                </div>
-                <div class="col-md-6">
-                    <h5 style="display:inline">Type</h5>
-                    <span style="font-size:0.9rem">{{data.type.omschrijving}}</span>
-                </div>
-                
-                <div class="col-md-12">
-                    <p>{{data.lange_omschrijving}}</p>
-                </div>
-                    
-                <div class="col-md-6">
-                    <button class="button">Op lijst</button>
-                </div>
-                <div class="col-md-6">
-                    <a class="far fa-heart favorite"></a>
-                </div>
 
-            </div>
-            
-
-            
-            
-        </div>
-
+<div class= "row detail_card">
+    <div class="col-md-6" style="padding-left:0">
+        <div class="detail_recipe_img" style="background-image:url({{data.afbeelding}})"></div>
+        
     </div>
+    <div class="col-md-6 d-flex flex-column"  style="font-size:0.8rem; padding-bottom:15px">
+        <div class="row">
+            <div class="col-md-12" style="font-size:1.2rem;">
+                <i class="fas fa-users recipe_icons"></i> 
+                <span>4</span>
+                <i class="fas fa-euro-sign recipe_icons"></i>
+                <span>{{(data.prijs/100)}}</span>
+                <i class="fas fa-burn recipe_icons"></i>
+                <span>{{data.calories}}</span><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h2>{{data.titel}}<h2></div>
+            <div class="col-md-6">{{data.rating}}</div>
+        </div>
+        <div class="row">
+            <h5 class="col-md-3">Keuken</h5>
+            <span class="col-md-3 center-text">{{data.keuken.omschrijving}}</span>
+            <h5 class="col-md-3">Type</h5>
+            <span class="col-md-3 center-text">{{data.type.omschrijving}}</span>
+        </div>
+        <div class="row">    
+            <div class="col-md-12">
+                <p>{{data.lange_omschrijving}}</p>
+            </div>
+        </div>
+        <div class="row mt-auto">
+            <div class="col-md-6">
+                <button class="button">Op lijst</button>
+            </div>
+            <div class="col-md-6">
+                <a class="far fa-heart favorite"></a>
+            </div>
+        </div>
+        
+
+        
+        
+    </div>
+
 </div>
+
 <div class= "recipe_info">
     <div class="container-fluid">
         <div class="row">
@@ -70,21 +71,49 @@
                     </ul>
                     <div class="tab-content recipe-body">
                         <div class="tab-pane active" id="tab1">
-                            <ul>
-                                {% for ingredient in data.ingredienten %}
-                                <li>{{ingredient.naam}}</li>
+                            {% for ingredient in data.ingredienten %}
+                            {# <div>{{ingredient.naam}}</div> #}
 
-                                {% endfor %}
-                            </ul>
+                            <div class="row ingredient" >
+                            
+                                <div class="col-md-2">
+                                    <div class="detail_recipe_img" style="background-image:url({{ingredient.afbeelding}})"></div>
+                                
+                                </div>
+                                <div class="col-md-10">
+                                    <h3>{{ingredient.naam}}</h3>
+                                    <p>{{ingredient.omschrijving}}</p>
+                                    <div style="display:flex;gap:0px 10px;">
+                                        <h5 class="font-size__small" >Hoeveelheid:</h5>
+                                        <div>{{ingredient.aantal}}</div>
+                                        <div>{{ingredient.eenheid}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                            
                         </div>
                         <div class="tab-pane" id="tab2">
                             {% for stap in data.bereidingswijze %}
-                                <div>{{stap.nummeriekveld}}. {{stap.tekstveld}}</div>
+                            <div class="row prepare">
+                                <div class="col-md-2 stepnumber">{{stap.nummeriekveld}}.</div>
+                                <div class="col-md-4" style="font-size:0.9rem"> {{stap.tekstveld}}</div>
+                            </div>
                             {% endfor %}
                         </div>
                         <div class="tab-pane" id="tab3">
                             {% for opmerking in data.opmerkingen %}
-                                <div>{{opmerking.user_name}}: {{opmerking.tekstveld}}</div>
+                            <div class="row remarks" >
+                                <div class="col-md-2">
+                                    <div class="user_img" style="background-image:url({{opmerking.afbeelding}})"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4> {{opmerking.user_name}} </h4>
+                                    <div> {{opmerking.tekstveld}} </div>
+                                </div>
+                            </div>
+                            
                             {% endfor %}
                         </div>
 

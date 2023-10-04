@@ -23,7 +23,7 @@ $gerecht = new gerecht($db->getConnection());
 $data = $gerecht->selecteerGerecht();
 
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
-$action = isset($_GET["action"]) ? $_GET["action"] : "detail";
+$action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
 switch($action){
 
@@ -36,7 +36,7 @@ switch($action){
     }
     
     case "detail": {
-        $data = $gerecht->selecteerGerecht(2);
+        $data = $gerecht->selecteerGerecht($gerecht_id);
         $template = 'detail.html.twig';
         $title = "detail";
     
