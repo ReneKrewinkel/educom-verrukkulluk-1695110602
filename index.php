@@ -42,43 +42,36 @@ switch($action){
     
         break;
     }
-    
-    case "preperation": {
-    
-    
-        break;
-    }
-    
-    case "remarks": {
-    
-    
-        break;
-    }
 
+    
+    case "rating": {
+        $data = json_encode($gerecht->selecteerGerecht($gerecht_id)["rating"]);
+        $template = 'rating.php';
+        $title = "rating";
+        
+        print_r($_POST); // Debug: Print the entire POST data
+            
+        
+        break;
+    }
+    
+    case "favorites": {
+        
+        
+        break;
+    }
+    
+    case "groceries": {
+        
+        
+        break;
+    }
+    
     case "search": {
     
     
         break;
     }
-    
-    case "rating": {
-    
-    
-        break;
-    }
-    
-    case "favorites": {
-    
-    
-        break;
-    }
-    
-    case "groceries": {
-    
-    
-        break;
-    }
-
 }
 
 $template = $twig->load($template);
