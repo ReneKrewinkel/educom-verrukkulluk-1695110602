@@ -60,13 +60,17 @@ class gerecht {
 
     private function selecteerWaardering($gerecht_id){
         $gerechten = $this->gerechtInfo->selecteerInfo($gerecht_id, "W");
-        $waarderingen = [];
+        $totaalWaardering = 0;
+        $aantal = count($gerechten);
+        if ($aantal == 0){
+            return ($totaalwaardering);
+        }
         foreach($gerechten as $gerecht){
-            $waarderingen[] = ["waardering" => $gerecht["nummeriekveld"]];
+            $totaalWaardering += $gerecht["nummeriekveld"]; 
         }
         
-        
-        return $waarderingen;
+        $waardering = $totaalWaardering / $aantal;
+        return($waardering);
     }
 
     private function selecteerBereidingswijze($gerecht_id){

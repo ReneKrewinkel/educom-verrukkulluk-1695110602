@@ -45,11 +45,22 @@ switch($action){
 
     
     case "rating": {
-        $data = json_encode($gerecht->selecteerGerecht($gerecht_id)["rating"]);
-        $template = 'rating.php';
-        $title = "rating";
+        $rating = $_GET["rating"];
+
+        $sql = "INSERT INTO `gerechtinfo`(`record_type`, `gerecht_id`, `user_id`, `datum`, `nummeriekveld`, `tekstveld`) 
+                VALUES ('W',$gerecht_id, null, null, $rating, null)";
+        $insert = mysqli_query($db->getConnection(),$sql);
         
-        print_r($_POST); // Debug: Print the entire POST data
+        $data = $gerecht->selecteerGerecht($gerecht_id);
+
+        $average = ["average" => ($data["rating"])];
+
+        header('Content-type: application/json');
+        echo json_encode($average);
+        die();
+
+        
+        
             
         
         break;

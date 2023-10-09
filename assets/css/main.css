@@ -3,7 +3,7 @@
  */
 
 
-:root {
+ :root {
 
     /* FONTS */
     --heading: "pretty_lilyregular";
@@ -93,7 +93,6 @@ html, body {
     flex-wrap:wrap;
     align-content: space-between;
 }
-
 
 .button{
     background-color: var(--lighter-red);
@@ -196,19 +195,10 @@ html, body {
 }
 
 .recipe-tabs{
-    box-shadow: 1px -2px 5px #000;
-    border-radius: 50px 50px 0 0;
-    color:var(--darker-green);
-    font-family: var(--heading);
-    font-size: 2rem;
-}
-
-.recipe-tabs:hover {
-    color:var(--lighter-green);
-}
-
-.recipe-tabs:active {
-    color:red;
+    border: #000;
+    box-shadow: 1px -2px 5px;
+    border-radius: 25px 25px 0 0;
+    color:#000;
 }
 
 .recipe-body{
@@ -372,8 +362,6 @@ html, body {
     padding-bottom: 20px;
 }
 
-
-
 .user_img{
     width:100px;
     height:100px;
@@ -384,8 +372,15 @@ html, body {
     border-radius:50px;
 }
 
+.star {
+    color: darkgoldenrod;;
+    cursor: pointer;
+}
 
-.sander_text {
-    background-color:red;
-    font-size: 32px;
+.star:hover {
+    color: gold;
+}
+
+.selected_stars{
+    color:gold;
 }
