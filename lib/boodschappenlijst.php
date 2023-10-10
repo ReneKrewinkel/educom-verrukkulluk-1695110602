@@ -4,10 +4,17 @@ class boodschappenlijst {
 
     private $connection;
     private $ingredienten;
+    private $artikel;
 
     public function __construct($connection){
         $this->connection = $connection;
         $this->ingredienten = new ingredient($connection);
+        $this->artikel = new artikel($connection);
+    }
+
+    private function selectArtikel($artikel_id) {
+        $art = $this->artikel->selecteerArtikel($artikel_id);
+        return($art);
     }
 
     private function ophalenBoodschappen($user_id){
@@ -25,6 +32,7 @@ class boodschappenlijst {
         }
         return $boodschappen;
     }
+
 
 
     private function artikelOpLijst($artikel_id,$user_id){
@@ -64,5 +72,31 @@ class boodschappenlijst {
                 $this->artikelBijwerken($user_id,$ingredient["artikel_id"],$ingredient["aantal"]);
             }
         }
+    }
+
+    public function getGroceryList($user_id) {
+        $groceryList = [];
+        $groceries = $this->ophalenBoodschappen($user_id);
+        foreach($groceries as $grocery) {
+            $artikel = $this->selectArtikel($grocery["artikel_id"]);
+            $groceryList[] = [
+                "id" => $grocery["id"],
+                "user_id" => $grocery["user_id"],
+                "artikel_id" => $grocery["artikel_id"],
+                "aantal" => $grocery["aantal"],
+                
+                "naam" => $artikel["naam"],
+                "omschrijving" => $artikel["omschrijving"],
+                "prijs" => $artikel["prijs"],
+                "verpakking" => $artikel["verpakking"],
+                "calories" => $artikel["calories"],
+                "eenheid" => $artikel["eenheid"],
+                "afbeelding" => $artikel["afbeelding"]
+            ];
+
+        }
+        
+        return($groceryList);
+
     }
 }

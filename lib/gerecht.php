@@ -111,14 +111,23 @@ class gerecht {
         if ($gerecht_id === "alle"){
             $sql = "select * from gerecht";
         }
+        elseif (is_array($gerecht_id)){
+            $sql = "SELECT * FROM `gerecht` WHERE `titel` LIKE '%{$gerecht_id['input']}%'";
+            $result = mysqli_query($this->connection,$sql);
+            $gerechten = [];
+            while($gerecht = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                array_push($gerechten, $gerecht);
+            }
+            return ($gerechten);
+        }
         else {
             $sql = "select * from gerecht where id=$gerecht_id";
         }
         
         $result = mysqli_query($this->connection,$sql);
         $gerechten = [];
-
         while($gerecht = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
             $user = $this->selectUser($gerecht["user_id"]);
             $ingredienten = $this->selectIngredient($gerecht["id"]);
             $calories = $this->berekenCalories($ingredienten);

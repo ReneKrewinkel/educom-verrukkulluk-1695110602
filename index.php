@@ -20,7 +20,12 @@ require_once("lib/boodschappenlijst.php");
 
 $db = new database();
 $gerecht = new gerecht($db->getConnection());
+$groceryList = new boodschappenlijst($db->getConnection());
 $data = $gerecht->selecteerGerecht();
+$groceries = "";
+$search = "";
+
+
 
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
@@ -52,17 +57,30 @@ switch($action){
         $insert = mysqli_query($db->getConnection(),$sql);
         
         $data = $gerecht->selecteerGerecht($gerecht_id);
-
         $average = ["average" => ($data["rating"])];
 
         header('Content-type: application/json');
         echo json_encode($average);
         die();
 
+        break;
+    }
+
+    case "grocery_list": {
+        $user_id = 1;
+        $groceries = $groceryList->getGroceryList($user_id);
         
-        
-            
-        
+        $template = 'grocery_list.html.twig';
+        $title = "grocery_list";
+    }
+    
+    case "search": {
+        $input = ["input"=> $_GET["input"]];
+        $search = $gerecht->selecteerGerecht($input);
+        header('Content-type: application/json');
+        echo json_encode($search);
+        die();
+    
         break;
     }
     
@@ -72,20 +90,13 @@ switch($action){
         break;
     }
     
-    case "groceries": {
-        
-        
-        break;
-    }
     
-    case "search": {
-    
-    
-        break;
-    }
 }
 
 $template = $twig->load($template);
-
-echo $template->render(["title" => $title, "data" => $data]);
-
+if ($groceries) {
+    echo $template->render(["title" => $title, "data" => $data, "groceries" => $groceries]);
+}
+else {
+    echo $template->render(["title" => $title, "data" => $data]);
+}

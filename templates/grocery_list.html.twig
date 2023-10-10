@@ -1,0 +1,48 @@
+{% extends "main.html.twig" %}
+
+{% block content %}
+
+<div class="grocery_list d-flex flex-column">
+    <div class="row">
+        <div class="col-md-12"><h1 style="font-size:5rem">Boodschappen</h1></div>
+    </div> 
+    {% set totalPrice = 0 %}
+    {% for grocery in groceries %}
+        <div class="row height-groceries ingredient">
+            <div class="col-md-2">
+                <div class="detail_recipe_img" style="background-image:url({{grocery.afbeelding}})"></div>
+            </div>
+
+            <div class="col-md-5">
+                <h2>{{grocery.naam}}</h2>
+                <p class="text__small">{{grocery.omschrijving}}</p>
+
+            </div>
+            <div class="col-md-1 bigger-text" style="padding:0px">
+                {% set totalAmount = (grocery.aantal / grocery.verpakking) | round(0,'ceil') %}
+                <div class="amount">{{ totalAmount}}</div>
+            </div>
+            {% set price = (grocery.prijs * totalAmount / 100)  %}
+            {% set totalPrice = totalPrice + price * totalAmount %}
+            
+            <div class="col-md-2 bigger-text padding-prizes">
+                <i class="fas fa-euro-sign" style="color:var(--lighter-red);"></i>
+                <span style="font-weight:bold">{{ price | number_format(2,",") }}</span>
+            </div>
+            <div class="col-md-2">
+                <a class="fas fa-check icons-groceries check"></a>
+                <a class="far fa-trash-alt icons-groceries trash"></a>
+            </div>
+        </div>
+    {% endfor %}
+    
+    <div class="row mt-auto ingredient bigger-text">
+        <h1 class="col-md-8" style="color:var(--darker-red)">Totaal</h1>
+        <div class="col-md-2 total-prize padding-prizes">
+            <i class="fas fa-euro-sign" style="color:var(--lighter-red);"></i>
+            <span style="font-weight:bold;">{{totalPrice | number_format(2,",")}}</span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

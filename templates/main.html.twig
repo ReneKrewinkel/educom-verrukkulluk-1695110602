@@ -56,12 +56,59 @@
                                     <a class="menu-headers">Mijn Favorieten</a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a class="menu-headers">Mijn Boodschappenlijst</a>
+                                    <a href="?action=grocery_list" class="menu-headers">Mijn Boodschappenlijst</a>
                                 </div>
 
                             </div>
                         </div>
                     </div>
+                </div>
+                <script>
+            
+                $(document).ready(function() {
+                    $("#search").keyup(function(){
+                        
+                        let input = $(this).val()
+                        const url =  "index.php?action=search" + "&input=" + input
+                        var searchDropdown = document.getElementById("searchDropdown")
+                        searchDropdown.innerHTML = ""
+                        if (input != ""){
+                            $.ajax({
+                                url: url,
+                                method: "GET",
+                                success: function(result) {
+                                    console.log(result)
+                                    
+                                    result.forEach((elem, index) => {
+                                        let img = elem["afbeelding"]
+                                        let title = elem["titel"]
+                                        let gerecht_id = elem["id"]
+                                        searchDropdown.innerHTML += `
+                                        <a href="?action=detail&gerecht_id=${gerecht_id}" class="row search-result">
+                                            <div class="col-md-5">
+                                                <div class="detail_recipe_img" style="background-image:url(${img})"></div>
+                                            </div>
+                                            <h3 class="col-md-7">${title}</h3>
+                                        </a>`;
+                                    })
+
+                                
+                                }
+                            })
+                        }
+                    })
+                })
+
+                </script>
+
+                <div class="searchbar-pos">
+                    <i class="fas fa-search search-icon"></i>
+                    <form>
+                        <input type="text" id="search" name="search" placeholder="Search" class="searchbar"><br>
+                    </form>
+                </div>
+                <div id="searchDropdown" class="search-dropdown">
+                
                 </div>
             </div>
         </div>

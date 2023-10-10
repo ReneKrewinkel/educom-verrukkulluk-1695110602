@@ -257,28 +257,20 @@ html, body {
     font-size:0.9rem;
     margin-bottom:50px;
     height: 500px;
-
 }
 
 .hamburger-menu{
     position: absolute;
     right:25px;
     top:25px;
-
 }
 
 .menu-trigger{
-    font-size: 2.5rem;
+    font-size: 3rem;
     color:var(--lighter-orange);
-    
     cursor: pointer;
     transition: all 0.4s ease;
     z-index: 5000 !important;
-    
-}
-
-.hamburger-menu:hover{
-    color:var(--lighter-orange);
 }
 
 .hamburger-menu:hover .dropdown{
@@ -316,13 +308,72 @@ html, body {
     color:var(--darker-red);
 }
 
-.font-size__small{
+.searchbar-pos{
+    background-color: #FFF;
+    position: absolute;
+    right:100px;
+    top:25px;
+    height:50px;
+    width:300px;
+    border-radius: 25px;
+    padding:10px;
+    display: flex;
+    gap:10px;
+    
+}
+
+.search-icon{
+    color:red;
+    font-size: 30px;
+}
+
+.searchbar{
+    height: 30px;
+    width: 240px;
+    border:none;
+}
+
+.searchbar:active, .searchbar:focus {
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+}
+
+.search-dropdown{
+    color:#000;
+    background-color: var(--kahki);
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    right:100px;
+    top:80px;
+    width: 300px;
+}
+
+.search-result{
+    padding:10px 0 10px;
+    margin:0px;
+    width: 300px;
+    height:100px;
+    box-shadow: 0 0 1px #000;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.search-result:hover{
+    background-color: #BDB76B;
+}
+
+.heading__small{
     font-size:1.25rem !important;
+}
+
+.text__small{
+    font-size:0.8rem;
 }
 
 .ingredient{
     padding:20px 20px 0;
-    font-size:0.8rem;
+    
 }
 
 .ingredient:last-child{
@@ -384,3 +435,64 @@ html, body {
 .selected_stars{
     color:gold;
 }
+
+.grocery_list{
+    box-shadow: 2px 2px 10px #000;
+    padding: 25px;
+    width: 100%;
+    min-height: 900px;
+    margin-bottom:50px;
+}
+
+.height-groceries{
+    height:125px;
+}
+
+.amount {
+    text-align: center;
+    color: var(--lighter-green);
+    font-weight: bold;
+    box-shadow: 0px 0px 3px #000;
+    width: 100%;
+}
+
+.padding-prizes{
+    padding-left:5px;
+    padding-right:5px;
+    text-align: center;
+}
+
+.total-prize {
+    font-weight: bold;
+    padding-top: 20px;
+    
+}
+
+.bigger-text {
+    font-size: 1.25rem;
+}
+
+.icons-groceries{
+    font-size: 2rem;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.check {
+    color: var(--darker-green);
+    margin-right: 5px;
+
+}
+
+.check:hover {
+    color: var(--lighter-green);
+}
+
+.trash {
+    color: var(--lighter-red);
+}
+
+.trash:hover {
+    color: var(--darker-red);
+}
+
